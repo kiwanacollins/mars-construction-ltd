@@ -1,0 +1,272 @@
+/* Mars logo is a tall stacked mark - constrain it in the nav header and auth pages */
+.nav-header .brand-logo .logo-abbr {
+	max-width: 9rem;
+	max-height: 3rem;
+	width: auto;
+	object-fit: contain;
+}
+
+.logo-auth {
+	max-height: 90px;
+	width: auto;
+}
+
+/* Clean list/table page pattern (used by Plans, Plan Categories, etc.) */
+.clean-list-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+.clean-list-header h2 {
+	font-size: 24px;
+	font-weight: 700;
+	margin: 0;
+	color: #1C1C28;
+}
+
+.clean-list-btn-add {
+	background-color: #1C9DB2;
+	color: #fff;
+	padding: 10px 22px;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 14px;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	transition: background-color 200ms ease;
+}
+
+.clean-list-btn-add:hover {
+	background-color: #167687;
+	color: #fff;
+}
+
+.clean-list-card {
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 10px rgba(28, 40, 60, 0.06);
+	overflow: hidden;
+}
+
+.clean-list-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 18px 20px;
+	border-bottom: 1px solid #f0f2f5;
+}
+
+.clean-list-filters input,
+.clean-list-filters select {
+	border: 1px solid #e4e7ec;
+	border-radius: 8px;
+	padding: 9px 14px;
+	font-size: 14px;
+}
+
+.clean-list-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.clean-list-table thead th {
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 0.4px;
+	color: #9aa4b2;
+	font-weight: 600;
+	padding: 14px 20px;
+	border-bottom: 1px solid #f0f2f5;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.clean-list-table tbody td {
+	padding: 14px 20px;
+	vertical-align: middle;
+	border-bottom: 1px solid #f5f6f8;
+	font-size: 14px;
+	color: #3b4353;
+}
+
+.clean-list-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.clean-list-table tbody tr:hover {
+	background-color: #fafbfc;
+}
+
+.clean-list-thumb {
+	width: 48px;
+	height: 48px;
+	border-radius: 8px;
+	object-fit: cover;
+	background-color: #f0f2f5;
+	display: block;
+}
+
+.clean-list-title {
+	font-weight: 600;
+	color: #1C1C28;
+	text-decoration: none;
+}
+
+.clean-list-title:hover {
+	color: #1C9DB2;
+}
+
+.clean-list-pill {
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.clean-list-pill.is-featured {
+	background-color: #e6f7ea;
+	color: #1e9e50;
+}
+
+.clean-list-pill.is-standard {
+	background-color: #eef1f5;
+	color: #6c7a89;
+}
+
+.clean-list-actions {
+	display: flex;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.clean-list-actions a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+.clean-list-actions a.edit-btn {
+	background-color: #eef4ff;
+	color: #3B4CB8;
+}
+
+.clean-list-actions a.delete-btn {
+	background-color: #fdecea;
+	color: #d9483f;
+}
+
+.clean-list-actions a:hover {
+	opacity: 0.8;
+}
+
+.clean-list-empty {
+	padding: 50px 20px;
+	text-align: center;
+	color: #9aa4b2;
+}
+
+/* Step wizard pattern (used by Create Plan, Create Project, etc.) */
+.wizard-card {
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 10px rgba(28, 40, 60, 0.06);
+	overflow: hidden;
+}
+
+.wizard-steps {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #f0f2f5;
+}
+
+.wizard-step-item {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 18px 20px;
+	cursor: pointer;
+	border-bottom: 3px solid transparent;
+	color: #9aa4b2;
+	font-weight: 600;
+	font-size: 14px;
+	transition: all 200ms ease;
+}
+
+.wizard-step-item:hover {
+	background-color: #fafbfc;
+}
+
+.wizard-step-item.active {
+	color: #1C9DB2;
+	border-bottom-color: #1C9DB2;
+}
+
+.wizard-step-item.done {
+	color: #1e9e50;
+}
+
+.wizard-step-num {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	flex-shrink: 0;
+	border-radius: 50%;
+	background-color: #eef1f5;
+	font-size: 12px;
+}
+
+.wizard-step-item.active .wizard-step-num {
+	background-color: #1C9DB2;
+	color: #fff;
+}
+
+.wizard-step-item.done .wizard-step-num {
+	background-color: #1e9e50;
+	color: #fff;
+}
+
+.wizard-pane {
+	padding: 28px 24px;
+}
+
+.wizard-pane h5.wizard-pane-title {
+	font-weight: 700;
+	margin-bottom: 4px;
+}
+
+.wizard-pane p.wizard-pane-hint {
+	color: #9aa4b2;
+	font-size: 13px;
+	margin-bottom: 22px;
+}
+
+.wizard-nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 18px 24px;
+	border-top: 1px solid #f0f2f5;
+}
+
+.nav-header .logo-abbr {
+	max-width: 3.8rem;
+	width: 3.8rem;
+	height: auto;
+}

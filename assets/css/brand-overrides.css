@@ -1,0 +1,1787 @@
+/* Brand overrides: body text stays black, headings use primary, buttons use secondary (primary on hover) */
+
+/* Use Poppins site-wide, matching the admin backend's typeface. */
+body,
+h1, h2, h3, h4, h5, h6,
+input, button, select, textarea,
+.theme-btn {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--main-color);
+}
+
+/* Solid buttons: secondary by default, reveal fills to primary on hover */
+.btn-style-one,
+.btn-style-two {
+	background-color: var(--secondary-color) !important;
+}
+
+.btn-style-one .btn-wrap .text-one,
+.btn-style-one .btn-wrap .text-two,
+.btn-style-two .btn-wrap .text-one,
+.btn-style-two .btn-wrap .text-two {
+	color: var(--white-color) !important;
+}
+
+.btn-style-one:before,
+.btn-style-two:before {
+	background-color: var(--main-color) !important;
+}
+
+/* Logo sizing - Mars logo is a tall stacked mark, constrain it to header/footer height.
+   Also trims the overall header bar height (logo-box padding + nav link padding). */
+.main-header .header-lower .logo-box .logo img {
+	max-height: 60px;
+	width: auto;
+}
+
+.main-header .header-lower .logo-box {
+	padding: 14px 0px;
+}
+
+.main-header .main-menu .navigation > li > a {
+	padding: 10px 0px;
+}
+
+.mobile-menu .nav-logo img {
+	max-height: 56px;
+	width: auto;
+	max-width: none;
+}
+
+.footer-logo img {
+	max-height: 90px;
+	width: auto;
+}
+
+.footer-logo_centered {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+/* header-style-four was designed to float transparently over a hero banner (position:absolute).
+   Now that a solid category bar always follows the header, keep the header solid and in normal
+   flow everywhere so nothing renders underneath/behind it. */
+.main-header.header-style-four {
+	position: relative !important;
+	background-color: var(--white-color);
+}
+
+.main-header .header-lower {
+	background-color: var(--white-color);
+}
+
+/* True-center the nav pill in the header regardless of logo/icon cluster widths */
+.main-header .header-lower .inner-container > .d-flex {
+	position: relative;
+}
+
+.main-header .header-lower .nav-outer {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* header-style-four also swapped the nav pill to white-on-white (invisible against the
+   white header). Restore the same gray pill used on the homepage so the nav looks identical
+   on every page. */
+.main-header.header-style-four .main-menu {
+	background-color: var(--color-three);
+}
+
+.main-header.header-style-four .main-menu .navigation > li > a {
+	color: var(--color-two);
+}
+
+.main-header.header-style-four .main-menu .navigation > li.current > a,
+.main-header.header-style-four .main-menu .navigation > li:hover > a {
+	color: var(--main-color);
+}
+
+/* Page title banners no longer need to reserve space for an overlaid transparent header */
+.page-title {
+	padding-top: 100px;
+}
+
+/* Secondary category bar - shown under the main header on every page */
+.category-bar {
+	background-color: var(--main-color);
+	position: relative;
+	z-index: 2;
+}
+
+.category-bar_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.category-bar_list li {
+	margin: 0;
+}
+
+.category-bar_list li a {
+	display: block;
+	padding: 14px 22px;
+	color: var(--white-color) !important;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	border-bottom: 3px solid transparent;
+	transition: border-color 0.3s ease;
+}
+
+.category-bar_list li a:hover,
+.category-bar_list li.active a {
+	border-bottom-color: var(--secondary-color);
+	color: var(--white-color) !important;
+}
+
+@media (max-width: 767px) {
+	.category-bar_list {
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+	}
+
+	.category-bar_list::-webkit-scrollbar {
+		display: none;
+	}
+
+	.category-bar_list li {
+		flex-shrink: 0;
+	}
+
+	.category-bar_list li a {
+		padding: 12px 16px;
+		white-space: nowrap;
+	}
+}
+
+/* Header contact icons (video call / phone / whatsapp) - match the search/grid icon buttons */
+.header-contact-icon {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	margin-right: 10px;
+	border-radius: 50px;
+	font-size: 18px;
+	color: var(--color-two);
+	background-color: var(--color-three);
+	transition: all 300ms ease;
+}
+
+.header-contact-icon:hover {
+	color: var(--white-color);
+	background-color: var(--main-color);
+}
+
+.header-contact-icon--whatsapp {
+	color: #25D366;
+}
+
+.header-contact-icon--whatsapp:hover {
+	color: var(--white-color);
+	background-color: #25D366;
+}
+
+/* Cart icon badge */
+.nav-btn.navSidebar-button {
+	position: relative;
+}
+
+.cart-count-badge {
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 5px;
+	border-radius: 50px;
+	background-color: var(--secondary-color);
+	color: var(--white-color);
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 20px;
+	text-align: center;
+}
+
+/* Breathing room between the hero banner and the section right after it (e.g. "Discover Our Story") */
+.banner-two + .story-two {
+	padding-top: 90px;
+}
+
+/* "Explore Featured Plans" slider on the homepage was switched from .three-items_slider
+   to .four-items_slider (to show 4 cards per row), but the theme's prev/next arrow
+   positioning was only ever defined for the old class name scoped to .property-one,
+   so the arrows fell back to unstyled inline elements. Re-declare the same positioning
+   under the new class name. */
+.property-one .four-items_slider-pagination {
+	position: relative;
+	z-index: 10;
+	margin-top: 25px;
+	text-align: center;
+}
+
+.property-one .four-items_slider-prev,
+.property-one .four-items_slider-next {
+	position: absolute;
+	top: 0px;
+	width: 48px;
+	height: 48px;
+	z-index: 99;
+	cursor: pointer;
+	text-align: center;
+	line-height: 42px;
+	border-radius: 50px;
+	display: inline-block;
+	color: var(--black-color);
+	font-size: 18px;
+	transition: all 300ms ease;
+	border: 1px solid rgba(var(--black-color-rgb), 0.05);
+}
+
+.property-one .four-items_slider-prev {
+	right: 60px;
+}
+
+.property-one .four-items_slider-next {
+	right: 0px;
+}
+
+.property-one .four-items_slider-prev:hover,
+.property-one .four-items_slider-next:hover {
+	border-color: var(--main-color);
+	background-color: var(--main-color);
+}
+
+.property-one .four-items_slider-prev:hover img,
+.property-one .four-items_slider-next:hover img {
+	filter: invert(100%);
+}
+
+/* Property preview cards (homepage): title, specs and CTA now live inside the image overlay,
+   so they need light text/borders instead of the default dark-on-white styling. */
+.property-block_one.style-two .property-block_one-image-content {
+	bottom: 25px;
+	left: 15px;
+	right: 15px;
+}
+
+.property-block_one.style-two .property-block_one-image-content .property-block_one-heading {
+	margin-top: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	line-height: 1.3;
+	color: var(--white-color);
+}
+
+.property-block_one.style-two .property-block_one-image-link:hover .property-block_one-image-content .property-block_one-heading {
+	color: var(--secondary-color);
+}
+
+/* The overlay design has no white card frame - image fills the whole card */
+.property-block_one.style-two .property-block_one-inner {
+	padding: 0;
+	background-color: transparent;
+}
+
+.property-block_one.style-two .property-block_one-inner:hover {
+	box-shadow: none;
+}
+
+.property-block_one.style-two .property-block_one-image-content .property-block_one-info {
+	border-color: rgba(var(--white-color-rgb), 0.25);
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 4px;
+	justify-content: flex-start;
+}
+
+.property-block_one.style-two .property-block_one-image-content .property-block_one-info li {
+	color: rgba(var(--white-color-rgb), 0.85);
+	font-size: 10px;
+	margin-right: 3px;
+	padding-right: 3px;
+}
+
+/* Whole-card link wrapping image + overlay content; heart sits outside it, top-right */
+.property-block_one.style-two .property-block_one-image-link {
+	display: block;
+}
+
+.property-block_one.style-two .property-block_one-image img {
+	width: 100%;
+	height: 340px;
+	object-fit: cover;
+}
+
+.property-block_one.style-two .property-block_one-image-content .property-block_one-info li {
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap;
+}
+
+.property-block_one.style-two .property-block_one-image-content .property-block_one-info li span {
+	display: inline-flex;
+	align-items: center;
+	margin-right: 3px;
+}
+
+.property-block_one.style-two .property-block_one-image-content .property-block_one-info li span img {
+	width: 11px;
+	height: 11px;
+	object-fit: contain;
+}
+
+.property-block_one.style-two .property-block_one-heart {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	z-index: 2;
+}
+
+
+/* Plan detail hero image: cap the height so tall/placeholder photos don't dominate the page */
+.property-detail_image img {
+	max-height: 480px;
+	object-fit: cover;
+}
+
+/* Plan detail gallery slider: same height cap as the hero image */
+.property-detail .carousel-box img {
+	max-height: 480px;
+	object-fit: cover;
+}
+
+/* Customize Order sidebar widget: base price + selectable add-ons with a live running total */
+.customize-order_total {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 14px 18px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	background-color: var(--main-color);
+	color: var(--white-color);
+}
+
+.customize-order_total span {
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.customize-order_total strong {
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.customize-order_options {
+	margin-bottom: 20px;
+}
+
+.customize-order_option {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 12px 14px;
+	margin-bottom: 10px;
+	border: 1px solid var(--color-three);
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 300ms ease;
+}
+
+.customize-order_option:hover {
+	border-color: var(--main-color);
+}
+
+.customize-order_option input[type="checkbox"] {
+	margin-top: 4px;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+	accent-color: var(--main-color);
+}
+
+.customize-order_option-body {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.customize-order_option-name {
+	font-weight: 600;
+	color: var(--color-two);
+}
+
+.customize-order_option-desc {
+	font-size: 12px;
+	color: rgba(var(--color-two-rgb), 0.65);
+	margin-top: 2px;
+}
+
+.customize-order_option-price {
+	font-weight: 700;
+	color: var(--main-color);
+	white-space: nowrap;
+}
+
+/* Keep the customize-order widget in view while reading the plan; it naturally stops
+   sticking once the sidebar column (same height as the content column) runs out. */
+.customize-order-widget.sticky-widget {
+	position: sticky;
+	top: 90px;
+}
+
+/* Plans catalogue page: sidebar filter widgets */
+.service-list li a.active,
+.service-list li.active a {
+	color: var(--white-color);
+	background-color: var(--main-color);
+}
+
+.form-control-catalogue {
+	width: 100%;
+	padding: 12px 16px;
+	border: 1px solid var(--color-three);
+	border-radius: 8px;
+	background-color: var(--color-three);
+	color: var(--color-two);
+}
+
+.catalogue-filter-btn {
+	display: block;
+	text-align: center;
+}
+
+/* Homepage hero slider: swiper wraps the existing banner-two background + content pairing */
+.banner-two_slider,
+.banner-two_slider .swiper-slide {
+	position: relative;
+}
+
+.banner-two_slider .swiper-slide .banner-two_image {
+	position: absolute;
+}
+
+.banner-two_slider-pagination {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 30px;
+	z-index: 2;
+	text-align: center;
+}
+
+.banner-two_slider-pagination .swiper-pagination-bullet {
+	width: 10px;
+	height: 10px;
+	margin: 0 5px;
+	background-color: var(--white-color);
+	opacity: 0.6;
+}
+
+.banner-two_slider-pagination .swiper-pagination-bullet-active {
+	opacity: 1;
+	background-color: var(--main-color);
+}
+
+.catalogue-result-count {
+	margin-bottom: 20px;
+	font-size: 15px;
+	text-align: right;
+	color: rgba(var(--color-two-rgb), 0.75);
+}
+
+/* Construction page: "Projects We've Handled" cards linking to project-detail.php */
+.construction-project-card {
+	display: block;
+	border-radius: 12px;
+	overflow: hidden;
+	background-color: var(--color-three);
+	transition: box-shadow 300ms ease;
+}
+
+.construction-project-card:hover {
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+.construction-project-card_image {
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+}
+
+.construction-project-card_image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease;
+}
+
+.construction-project-card:hover .construction-project-card_image img {
+	transform: scale(1.05);
+}
+
+.construction-project-card_body {
+	padding: 16px 18px;
+}
+
+.construction-project-card_body h6 {
+	margin-bottom: 4px;
+	font-weight: 700;
+	color: var(--color-two);
+}
+
+.construction-project-card_meta {
+	font-size: 13px;
+	color: rgba(var(--color-two-rgb), 0.65);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+/* Construction page: content panel background should stay white, not the theme's default light gray */
+.service-detail_inner {
+	background-color: var(--white-color);
+}
+
+/* Construction page: hero intro section — reuses .story-three layout with a distinct accent */
+.construction-hero {
+	padding-top: 100px;
+	padding-bottom: 20px;
+}
+
+.construction-hero > .auto-container > .row.clearfix {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.construction-hero + .sidebar-page-container {
+	padding-top: 10px;
+}
+
+.construction-hero_color {
+	background-color: rgba(var(--secondary-color-rgb), 0.18) !important;
+}
+
+.construction-hero_badge .story-three_inner {
+	background-color: var(--secondary-color);
+}
+
+.construction-hero_text {
+	position: relative;
+	margin-bottom: 18px;
+	line-height: 1.7;
+	color: rgba(var(--color-two-rgb), 0.75);
+}
+
+.construction-hero .story-three_checklist li {
+	border-radius: 8px;
+	background-color: var(--white-color);
+}
+
+.construction-hero_btn {
+	margin-top: 10px;
+}
+
+/* Property Management page: narrower, centered inquiry form */
+.pm-inquiry_form {
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+/* Property Management page: narrower FAQ accordion with breathing room below */
+.pm-faq_wrap {
+	max-width: 760px;
+	margin: 0 auto 50px;
+}
+
+/* Property Management page: narrower "What We Handle" slider */
+.pm-handle_wrap {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* Property Management page: hero intro — reuses .story-three layout, main-color accent */
+.pm-hero_color {
+	background-color: rgba(var(--main-color-rgb), 0.18) !important;
+}
+
+/* Construction page: "What We Handle" — plan-category-card slider variant */
+.handle-slider {
+	margin-bottom: 35px;
+}
+
+.handle-slider .plan-category-card_name {
+	right: 14px;
+	left: 14px;
+	bottom: 14px;
+	font-size: 15px;
+	line-height: 1.35;
+	text-align: left;
+}
+
+.handle-slider .four-items_slider-pagination,
+.handle-slider .three-items_slider-pagination {
+	position: relative;
+	z-index: 10;
+	margin-top: 25px;
+	text-align: center;
+}
+
+.handle-slider .four-items_slider-pagination .swiper-pagination-bullet,
+.handle-slider .three-items_slider-pagination .swiper-pagination-bullet {
+	width: 10px;
+	height: 10px;
+	margin: 0 5px;
+	background-color: var(--color-three);
+	opacity: 1;
+}
+
+.handle-slider .four-items_slider-pagination .swiper-pagination-bullet-active,
+.handle-slider .three-items_slider-pagination .swiper-pagination-bullet-active {
+	background-color: var(--secondary-color);
+}
+
+/* Construction page: elevated "Project Track Record" stats panel */
+.stat-row {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px 0 40px;
+	margin-bottom: 30px;
+}
+
+.stat-item {
+	position: relative;
+	flex: 1 1 0;
+	min-width: 140px;
+	text-align: center;
+	padding: 0 15px;
+}
+
+.stat-item + .stat-item::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4px;
+	bottom: 4px;
+	width: 1px;
+	background-color: rgba(var(--color-two-rgb), 0.08);
+}
+
+.stat-item_value {
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--main-color);
+	margin-bottom: 10px;
+}
+
+.stat-item_label {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--color-two);
+}
+
+@media (max-width: 575px) {
+	.stat-row {
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.stat-item + .stat-item::before {
+		display: none;
+	}
+}
+
+/* Construction page: "Projects We've Handled" slider */
+.construction-projects_slider {
+	position: relative;
+	padding-bottom: 10px;
+}
+
+.construction-projects_slider .construction-project-card {
+	box-shadow: 0 6px 18px rgba(var(--color-two-rgb), 0.06);
+}
+
+.construction-projects_slider .construction-project-card:hover {
+	box-shadow: 0 18px 34px rgba(var(--main-color-rgb), 0.16);
+}
+
+.construction-project-card_image {
+	position: relative;
+}
+
+.construction-project-card_overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+.construction-project-card_badge {
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	padding: 5px 12px;
+	border-radius: 30px;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: #fff;
+	background-color: var(--secondary-color);
+}
+
+.construction-project-card_cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 8px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--main-color);
+	opacity: 0;
+	transform: translateX(-6px);
+	transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.construction-project-card:hover .construction-project-card_cta {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.construction-projects_slider-pagination {
+	position: relative;
+	margin-top: 24px;
+	text-align: center;
+}
+
+.construction-projects_slider-pagination .swiper-pagination-bullet {
+	width: 9px;
+	height: 9px;
+	margin: 0 4px;
+	background-color: rgba(var(--color-two-rgb), 0.18);
+	opacity: 1;
+	transition: background-color 250ms ease, transform 250ms ease;
+}
+
+.construction-projects_slider-pagination .swiper-pagination-bullet-active {
+	background-color: var(--main-color);
+	transform: scale(1.2);
+}
+
+.construction-projects_slider-prev,
+.construction-projects_slider-next {
+	position: absolute;
+	top: 40%;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: #fff;
+	color: var(--color-two);
+	box-shadow: 0 8px 20px rgba(var(--color-two-rgb), 0.14);
+	cursor: pointer;
+	transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
+}
+
+.construction-projects_slider-prev:hover,
+.construction-projects_slider-next:hover {
+	background-color: var(--main-color);
+	color: #fff;
+	transform: translateY(-50%) scale(1.06);
+}
+
+.construction-projects_slider-prev {
+	left: 10px;
+	transform: translateY(-50%);
+}
+
+.construction-projects_slider-next {
+	right: 10px;
+	transform: translateY(-50%);
+}
+
+@media (max-width: 991px) {
+	.construction-projects_slider-prev,
+	.construction-projects_slider-next {
+		display: none;
+	}
+}
+
+/* Sticky behavior moved from the primary header to the secondary category bar.
+   Cancel the theme's own fixed-header effect on the primary header... */
+.main-header.fixed-header .header-lower {
+	position: static !important;
+	box-shadow: none !important;
+	animation: none !important;
+}
+
+/* ...and give the category bar the fixed/sticky treatment instead. */
+.category-bar.category-bar-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.10);
+	animation: fadeInDown 500ms linear;
+}
+
+/* Homepage: Plan Categories section */
+.plan-categories-one {
+	position: relative;
+	padding: 60px 0 70px;
+}
+
+.plan-categories-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 24px;
+}
+
+@media (max-width: 991px) {
+	.plan-categories-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 575px) {
+	.plan-categories-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.plan-category-card {
+	display: block;
+	position: relative;
+	border-radius: 14px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.plan-category-card_image {
+	position: relative;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+}
+
+.plan-category-card_image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease;
+}
+
+.plan-category-card:hover .plan-category-card_image img {
+	transform: scale(1.08);
+}
+
+.plan-category-card_image::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60%;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
+	pointer-events: none;
+}
+
+.plan-category-card_name {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 18px;
+	z-index: 1;
+	color: var(--white-color);
+	font-size: 18px;
+	font-weight: 700;
+}
+
+/* Homepage: Latest Plans section */
+.latest-plans-one {
+	position: relative;
+	padding: 30px 0 100px;
+}
+
+/* Plans catalogue: filter sidebar redesign. */
+.plans-filter_head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 16px 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	background-color: var(--main-color);
+	color: var(--white-color);
+}
+
+.plans-filter_head-title {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.plans-filter_head-title i {
+	margin-right: 8px;
+}
+
+.plans-filter_head-count {
+	font-size: 12px;
+	opacity: 0.85;
+}
+
+.plans-filter_widget .sidebar-widget_title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.plans-filter_widget .sidebar-widget_title i {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: var(--color-three);
+	color: var(--main-color);
+	font-size: 13px;
+}
+
+.plans-filter_list {
+	position: relative;
+}
+
+.plans-filter_list li {
+	margin-bottom: 8px;
+}
+
+.plans-filter_list li a {
+	position: relative;
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 12px 16px;
+	border-radius: 8px;
+	color: var(--color-two);
+	background-color: rgba(var(--color-three-rgb), 1);
+	transition: all 250ms ease;
+}
+
+.plans-filter_dot {
+	width: 8px;
+	height: 8px;
+	margin-right: 10px;
+	border-radius: 50%;
+	background-color: rgba(var(--color-two-rgb), 0.25);
+	transition: background-color 250ms ease;
+	flex-shrink: 0;
+}
+
+.plans-filter_count {
+	margin-left: auto;
+	min-width: 26px;
+	padding: 2px 8px;
+	border-radius: 20px;
+	font-size: 12px;
+	text-align: center;
+	background-color: rgba(var(--color-two-rgb), 0.08);
+	color: var(--color-two);
+}
+
+.plans-filter_list li a:hover {
+	background-color: rgba(var(--main-color-rgb), 0.10);
+	color: var(--main-color);
+}
+
+.plans-filter_list li a:hover .plans-filter_dot {
+	background-color: var(--main-color);
+}
+
+.plans-filter_list li.active a {
+	color: var(--white-color);
+	background-color: var(--main-color);
+}
+
+.plans-filter_list li.active a .plans-filter_dot {
+	background-color: var(--white-color);
+}
+
+.plans-filter_list li.active a .plans-filter_count {
+	background-color: rgba(var(--white-color-rgb), 0.20);
+	color: var(--white-color);
+}
+
+/* Nudge the sidebar card to line up with the top of the plan card grid. */
+.plans-filter-sidebar {
+	margin-top: 36px;
+}
+
+/* "Let's Talk" CTA banner: breathing room + secondary color background */
+.cta-one {
+	padding: 60px 0;
+}
+
+.cta-one_inner-container {
+	background-color: var(--secondary-color) !important;
+}
+
+/* Homepage: "Our Portfolio" project slider */
+.projects-one {
+	position: relative;
+	padding: 30px 0 100px;
+}
+
+.projects-one .swiper-slide {
+	height: auto;
+}
+
+.projects-one .construction-project-card {
+	height: 100%;
+}
+
+.projects-items_slider-pagination {
+	position: relative;
+	z-index: 10;
+	margin-top: 30px;
+	text-align: center;
+}
+
+.projects-items_slider-pagination .swiper-pagination-bullet {
+	width: 10px;
+	height: 10px;
+	margin: 0 5px;
+	background-color: var(--color-three);
+	opacity: 1;
+}
+
+.projects-items_slider-pagination .swiper-pagination-bullet-active {
+	background-color: var(--secondary-color);
+}
+
+/* Homepage hero: two buttons side by side */
+.banner-two_buttons {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+/* Homepage hero: outline button variant */
+.btn-style-outline {
+	position: relative;
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+	border-radius: 50px;
+	padding: 15px 35px;
+	display: inline-block;
+	color: #fff;
+	text-transform: capitalize;
+	background-color: transparent;
+	border: 2px solid #fff;
+	transition: background-color 250ms ease, color 250ms ease;
+}
+
+.btn-style-outline:hover,
+.btn-style-outline:focus-visible {
+	background-color: #fff;
+	color: var(--color-two);
+}
+
+.btn-style-outline .btn-wrap {
+	position: relative;
+}
+
+.btn-style-outline .btn-wrap .text-two {
+	display: none;
+}
+
+/* Homepage hero: video background slides */
+.banner-two_image-video {
+	background-color: var(--color-two);
+}
+
+.hero-video-embed {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.hero-video-embed iframe,
+.hero-video-embed video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 177.77vh;
+	height: 56.25vw;
+	min-height: 100%;
+	min-width: 100%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+}
+
+.hero-video-overlay {
+	position: absolute;
+	inset: 0;
+	opacity: 0.80;
+	background-color: var(--color-two);
+}
+
+/* Project detail: meta pills, client chip, section dividers */
+.project-meta_pills {
+	list-style: none;
+	margin: 0 0 18px;
+	padding: 0;
+	gap: 10px;
+}
+
+.project-meta_pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 6px 14px;
+	border-radius: 30px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--color-two);
+	background-color: var(--color-three);
+}
+
+.project-meta_pill i {
+	color: var(--main-color);
+	font-size: 13px;
+}
+
+.project-meta_pill.is-category {
+	color: #fff;
+	background-color: var(--secondary-color);
+}
+
+.project-meta_pill.is-category i {
+	color: #fff;
+}
+
+.project-client_chip {
+	display: inline-flex;
+	width: fit-content;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 18px;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 8px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	color: var(--color-two);
+	background-color: rgba(var(--main-color-rgb), 0.06);
+	border-left: 3px solid var(--main-color);
+}
+
+.project-client_chip i {
+	color: var(--main-color);
+}
+
+.project-detail_text {
+	font-size: 16px;
+	line-height: 1.7;
+	color: rgba(var(--color-two-rgb), 0.75);
+}
+
+.project-detail_divider {
+	height: 1px;
+	margin: 35px 0;
+	background-color: rgba(var(--color-two-rgb), 0.08);
+}
+
+/* Plan/project detail: row pairing the location/client line with the share buttons */
+.detail-heading_row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 18px;
+}
+
+.detail-heading_row .property-detail_location,
+.detail-heading_row .project-client_chip {
+	margin-bottom: 0;
+	align-self: center;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+}
+
+.detail-heading_row .share-buttons {
+	align-self: center;
+}
+
+/* Checkout page: bespoke e-commerce-style layout, built with fresh classes
+   rather than the theme's .default-form/.theme-btn combo (which has a proven
+   history of hijacked button sizing/positioning — see the review-form fix). */
+.checkout-page {
+	padding: 60px 0 100px;
+}
+
+.checkout-status_card {
+	max-width: 480px;
+	margin: 40px auto;
+	padding: 50px 40px;
+	text-align: center;
+	border-radius: 14px;
+	background-color: var(--white-color);
+	box-shadow: 0 15px 40px rgba(var(--color-two-rgb), 0.08);
+}
+
+.checkout-status_icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 70px;
+	height: 70px;
+	margin: 0 auto 20px;
+	border-radius: 50%;
+	font-size: 26px;
+	color: var(--main-color);
+	background-color: rgba(var(--main-color-rgb), 0.10);
+}
+
+.checkout-status_icon.is-success {
+	color: #fff;
+	background-color: #2ea043;
+}
+
+.checkout-status_icon.is-warning {
+	color: #fff;
+	background-color: #d97706;
+}
+
+.checkout-status_card h2 {
+	margin-bottom: 12px;
+}
+
+.checkout-status_card p {
+	margin-bottom: 25px;
+	color: rgba(var(--color-two-rgb), 0.70);
+}
+
+.checkout-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 15px 35px;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 15px;
+	letter-spacing: 0.3px;
+	text-transform: capitalize;
+	color: #fff;
+	cursor: pointer;
+	background-color: var(--secondary-color);
+	transition: background-color 250ms ease, transform 250ms ease;
+}
+
+.checkout-btn:hover,
+.checkout-btn:focus-visible {
+	background-color: var(--main-color);
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+.checkout-btn_full {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.checkout-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	margin-bottom: 40px;
+}
+
+.checkout-header_step {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 600;
+	font-size: 14px;
+	color: rgba(var(--color-two-rgb), 0.40);
+}
+
+.checkout-header_step span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	font-size: 12px;
+	background-color: rgba(var(--color-two-rgb), 0.08);
+	color: rgba(var(--color-two-rgb), 0.50);
+}
+
+.checkout-header_step.is-active {
+	color: var(--color-two);
+}
+
+.checkout-header_step.is-active span {
+	color: #fff;
+	background-color: var(--main-color);
+}
+
+.checkout-header_step.is-done span {
+	color: #fff;
+	background-color: #2ea043;
+}
+
+.checkout-header_sep {
+	width: 40px;
+	height: 1px;
+	background-color: rgba(var(--color-two-rgb), 0.12);
+}
+
+.checkout-grid {
+	display: grid;
+	grid-template-columns: 1.4fr 1fr;
+	gap: 30px;
+	align-items: start;
+}
+
+.checkout-panel {
+	padding: 30px;
+	border-radius: 14px;
+	background-color: var(--white-color);
+	box-shadow: 0 10px 30px rgba(var(--color-two-rgb), 0.06);
+}
+
+.checkout-panel_title {
+	margin-bottom: 22px;
+	font-size: 20px;
+}
+
+.checkout-summary {
+	position: sticky;
+	top: 20px;
+}
+
+.checkout-field {
+	margin-bottom: 18px;
+}
+
+.checkout-field label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--color-two);
+}
+
+.checkout-field label span {
+	color: var(--secondary-color);
+}
+
+.checkout-field input {
+	display: block;
+	width: 100%;
+	height: 50px;
+	padding: 10px 18px;
+	border: 1px solid rgba(var(--color-two-rgb), 0.12);
+	border-radius: 8px;
+	font-size: 15px;
+	color: var(--color-two);
+	background-color: var(--white-color);
+	transition: border-color 250ms ease;
+}
+
+.checkout-field input:focus {
+	outline: none;
+	border-color: var(--main-color);
+}
+
+.checkout-info_box {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin-top: 25px;
+	padding: 16px 18px;
+	border-radius: 8px;
+	font-size: 13px;
+	line-height: 1.6;
+	color: rgba(var(--color-two-rgb), 0.75);
+	background-color: rgba(var(--main-color-rgb), 0.06);
+}
+
+.checkout-info_box i {
+	margin-top: 2px;
+	color: var(--main-color);
+}
+
+.checkout-summary_items {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid rgba(var(--color-two-rgb), 0.08);
+}
+
+.checkout-summary_item {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.checkout-summary_item-thumb {
+	flex-shrink: 0;
+	width: 56px;
+	height: 56px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.checkout-summary_item-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.checkout-summary_item-body {
+	flex: 1;
+	min-width: 0;
+}
+
+.checkout-summary_item-title {
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--color-two);
+}
+
+.checkout-summary_item-addons,
+.checkout-summary_item-qty {
+	font-size: 12px;
+	color: rgba(var(--color-two-rgb), 0.55);
+}
+
+.checkout-summary_item-price {
+	flex-shrink: 0;
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--color-two);
+}
+
+.checkout-summary_totals {
+	margin-bottom: 5px;
+}
+
+.checkout-summary_row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: rgba(var(--color-two-rgb), 0.70);
+}
+
+.checkout-summary_row.is-total {
+	margin-bottom: 0;
+	padding-top: 12px;
+	border-top: 1px solid rgba(var(--color-two-rgb), 0.08);
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--color-two);
+}
+
+.checkout-secure_note {
+	margin-top: 14px;
+	font-size: 12px;
+	text-align: center;
+	color: rgba(var(--color-two-rgb), 0.50);
+}
+
+.checkout-secure_note i {
+	margin-right: 4px;
+}
+
+@media (max-width: 991px) {
+	.checkout-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.checkout-summary {
+		position: static;
+	}
+}
+
+/* Cart sidebar: checkout button (theme's pill-radius btn-style-one bled past the
+   panel edges at full width, so this uses a properly-sized full-width button). */
+.cart-checkout-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: calc(100% - 20px);
+	margin: 5px 10px 20px;
+	padding: 14px 20px;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: var(--secondary-color);
+	transition: background-color 250ms ease, transform 250ms ease;
+}
+
+.cart-checkout-btn:hover,
+.cart-checkout-btn:focus-visible {
+	background-color: var(--main-color);
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+/* Plan/project detail: social share buttons */
+.share-buttons {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: fit-content;
+	margin-left: auto;
+	margin-bottom: 0;
+}
+
+.share-buttons_label {
+	font-size: 14px;
+	font-weight: 600;
+	color: rgba(var(--color-two-rgb), 0.65);
+	margin-right: 4px;
+}
+
+.share-buttons_link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: none;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+	transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.share-buttons_link:hover,
+.share-buttons_link:focus-visible {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 14px rgba(var(--color-two-rgb), 0.20);
+}
+
+.share-buttons_link.is-facebook {
+	background-color: #1877f2;
+}
+
+.share-buttons_link.is-twitter {
+	background-color: #1da1f2;
+}
+
+.share-buttons_link.is-whatsapp {
+	background-color: #25d366;
+}
+
+.share-buttons_link.is-copy {
+	background-color: var(--main-color);
+}
+
+/* Plan/project detail: review submission form — plain flexbox, no dependency on
+   the Bootstrap column grid (which was pushing the submit button outside its
+   container in this narrower context). */
+.review-form_grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin: 0;
+}
+
+.review-form_half {
+	flex: 1 1 220px;
+	min-width: 0;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.review-form_full {
+	flex: 1 1 100%;
+	min-width: 0;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Undo the theme's generic ".default-form form button" rule (a small absolute-
+   positioned icon button meant for newsletter forms) which was hijacking this
+   button's position and clamping it to 48x48px, clipping "Submit Review". */
+.review-form form button.theme-btn.btn-style-one {
+	position: relative;
+	right: auto;
+	bottom: auto;
+	width: auto;
+	height: auto;
+	line-height: normal;
+	font-family: inherit;
+}
+
+/* Plan/project detail: reviews section */
+.property-detail_subheading {
+	position: relative;
+	padding-left: 16px;
+}
+
+.property-detail_subheading::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4px;
+	bottom: 4px;
+	width: 4px;
+	border-radius: 4px;
+	background-color: var(--secondary-color);
+}
+
+.review-list_item {
+	box-shadow: 0 4px 14px rgba(var(--color-two-rgb), 0.05);
+	transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.review-list_item:hover {
+	transform: translateY(-2px);
+}
+
+.star-rating-inline {
+	font-size: 15px;
+	font-weight: 400;
+	color: rgba(var(--color-two-rgb), 0.6);
+}
+
+.review-list {
+	list-style: none;
+	margin: 0 0 20px;
+	padding: 0;
+}
+
+.review-list_item {
+	padding: 16px 20px;
+	margin-bottom: 12px;
+	border-radius: 8px;
+	background-color: var(--color-three);
+}
+
+.review-list_stars {
+	color: #f5b301;
+	letter-spacing: 2px;
+	font-size: 15px;
+}
+
+.review-list_name {
+	font-weight: 600;
+	color: var(--color-two);
+	margin-top: 4px;
+}
+
+.review-list_date {
+	font-weight: 400;
+	font-size: 12px;
+	color: rgba(var(--color-two-rgb), 0.55);
+	margin-left: 6px;
+}
+
+.review-list_comment {
+	margin: 6px 0 0;
+	color: rgba(var(--color-two-rgb), 0.8);
+}
+
+.review-rating-input {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	gap: 4px;
+	margin-bottom: 15px;
+}
+
+.review-rating-input input {
+	display: none;
+}
+
+.review-rating-input label {
+	cursor: pointer;
+	font-size: 26px;
+	color: var(--color-three);
+	transition: color 150ms ease;
+}
+
+.review-rating-input input:checked ~ label,
+.review-rating-input label:hover,
+.review-rating-input label:hover ~ label {
+	color: #f5b301;
+}
+
+/* Pin the footer to the bottom of the viewport on short pages instead of leaving
+   a blank white gap below it (.cursor/.preloader/.search-popup/.xs-sidebar-group
+   are all position:fixed overlays, so they don't affect this flex flow). */
+.page-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main-footer {
+	margin-top: auto;
+}
+
+/* .footer-bottom has a baked-in margin-bottom:20px in the theme CSS, which leaves an
+   uncovered white gap below the dark bar since the background doesn't extend into
+   the margin area. */
+.main-footer .footer-bottom {
+	margin-bottom: 0;
+}
+
+/* Footer contact icons: line-height/text-align centering doesn't center every
+   flaticon glyph consistently (the mail icon in particular sits off-center) -
+   flexbox centering works regardless of each glyph's own bounding box. */
+.footer-contact_list li span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+}
+
