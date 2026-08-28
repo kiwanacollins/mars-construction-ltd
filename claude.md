@@ -6,7 +6,7 @@
 
 ## Reference Images
 
-- If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
+- If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in relevant real images generated via Magnific (see below), sized/cropped to fit the reference layout — never `https://placehold.co/`. Generic copy is still fine for text. Do not improve or add to the design.
 - If no reference image: design from scratch with high craft (see guardrails below).
 - Screenshot your output, compare against reference, fix mismatches, re-screenshot. Do at least 2 comparison rounds. Stop only when no visible differences remain or user says so.
 
@@ -32,7 +32,7 @@
 
 - Single `index.html` file, all styles inline, unless user says otherwise
 - Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
-- Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
+- Images: always generate relevant real images via Magnific (see below). Never use `https://placehold.co/` unless the user explicitly asks for a placeholder.
 - Mobile-first responsive
 
 ## Brand Assets
@@ -40,6 +40,16 @@
 - Always check the `assets/` folder before designing. It may contain logos, color guides, style guides, or images.
 - If assets exist there, use them. Do not use placeholders where real assets are available.
 - If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
+- If no suitable asset exists in `assets/` for any image need, generate one with Magnific instead of reaching for `placehold.co`.
+
+## Magnific (Image Generation)
+
+- Magnific MCP is connected — use its tools directly (`images_generate`, `images_upscale`, `images_to_svg`, `images_remove_background`, `images_expand`, `images_variations`, etc.) whenever a real image, icon, or vector asset is needed and no suitable one exists in `assets/`.
+- Applies everywhere the site needs imagery: hero/section backgrounds, project and plan imagery (e.g. villa/property renders), blog featured images, service icons, team/agent photos, and images used to fill a reference-image layout.
+- When matching a reference image, generate content relevant to what the reference shows in that slot (e.g. a construction site photo where the reference has a construction site photo) — match the reference's subject matter and framing, not just its dimensions.
+- Every generation prompt must reflect this site's brand: match the existing color palette and material/photographic style already used in `assets/images/` (construction/real-estate, warm-neutral, high-craft — not generic stock-photo look).
+- Save generated assets into `assets/images/` (matching the existing folder convention) and reference them with relative paths — do not hotlink Magnific's `webUrl` from the live site.
+- After generating, follow the tool's `instruction` field (e.g. call `creations_show`/`creations_wait` to confirm the result) before treating the asset as ready to use.
 
 ## Anti-Generic Guardrails
 
