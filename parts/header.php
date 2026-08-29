@@ -55,6 +55,33 @@ function render_menu_branch($menu_by_parent, $parent_id, $depth = 0) {
 	}
 ?></title>
 
+<!-- Critical CSS: nav bar shape/color, inlined so it paints correctly on first render
+     instead of flashing unstyled while style.css (which @imports header.css, global.css, etc.)
+     and brand-overrides.css finish loading. Keep in sync with brand-overrides.css if those
+     selectors change. -->
+<style>
+:root {
+	--main-color: rgb(28,157,178);
+	--main-color-rgb: 28,157,178;
+	--secondary-color: rgb(143,35,29);
+	--color-two: rgb(23,27,42);
+	--color-three: rgb(245,245,245);
+	--white-color: rgb(255,255,255);
+}
+.main-header .header-lower { background-color: var(--white-color); }
+.main-header .header-lower .inner-container > .d-flex { position: relative; }
+.main-header .header-lower .nav-outer { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.category-bar { background-color: transparent; position: relative; z-index: 2; padding: 14px 0 26px; }
+.category-bar_inner { display: flex; align-items: center; justify-content: center; background-color: var(--main-color); border-radius: 50px; padding: 8px 8px 8px 0; max-width: 100%; }
+.category-bar_list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; }
+.category-bar_list li { margin: 0; position: relative; }
+.category-bar_list li a { display: flex; align-items: center; gap: 8px; padding: 13px 18px; color: rgba(255,255,255,0.92); font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; }
+.category-bar_home a { background-color: var(--secondary-color); border-radius: 50px; padding: 13px 24px 13px 34px; position: relative; }
+.category-bar_home a i { color: var(--white-color); }
+.category-bar_quote { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: 10px; padding: 14px 26px; background-color: var(--white-color); color: var(--color-two); font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; border-radius: 50px; white-space: nowrap; }
+.header-quicklinks { display: flex; align-items: center; flex-wrap: wrap; list-style: none; margin: 0; padding: 10px 28px; background-color: var(--color-three); border-radius: 50px; }
+</style>
+
 <!-- Stylesheets -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
