@@ -123,10 +123,9 @@ h1, h2, h3, h4, h5, h6 {
 	align-items: center;
 	justify-content: center;
 	gap: 0;
-	background: linear-gradient(90deg, rgb(56, 172, 190) 0%, var(--main-color) 55%, rgb(15, 110, 126) 100%);
+	background-color: var(--main-color);
 	border-radius: 50px;
 	padding: 8px 8px 8px 0;
-	box-shadow: 0 12px 24px rgba(var(--main-color-rgb), 0.28);
 	max-width: 100%;
 }
 
