@@ -8,18 +8,10 @@
 
 ***/
 
-@import url('global.css');
-@import url('header.css');
-@import url('footer.css');
-@import url('animate.css');
-@import url('jquery-ui.css');
-@import url('swiper.min.css');
-@import url('font-awesome.css');
-@import url('custom-animate.css');
-@import url('magnific-popup.css');
-@import url('flaticon_palace-icons.css');
-@import url('odometer-theme-default.css');
-@import url('jquery.bootstrap-touchspin.css');
+/* These used to be @import url(...) here, which forces the browser to discover and fetch them
+   serially (only after downloading and parsing this file first). They're now loaded as direct
+   <link> tags in parts/header.php, before this file, so the browser can request all of them in
+   parallel instead of waterfalling — this is what was causing the ~1.5s unstyled flash on load. */
 
 /*** 
 
