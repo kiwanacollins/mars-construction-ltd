@@ -106,19 +106,28 @@
 									</div>
 
 									<hr class="my-4">
-									<h5 class="mb-3">Header Contact Icons</h5>
+									<h5 class="mb-3">Header Contact Info</h5>
 									<div class="row">
 										<div class="mb-3 col-lg-4">
-											<label class="form-label">Video Call Link <small class="text-muted">(leave blank to hide the icon)</small></label>
-											<input type="text" name="header_video_url" class="form-control" placeholder="https://meet.google.com/..." value="<?php echo ss($settings, 'header_video_url'); ?>">
+											<label class="form-label">Header Phone Number <small class="text-muted">(shown as text in the top bar; leave blank to hide)</small></label>
+											<input type="text" name="header_phone" class="form-control" placeholder="+256 700 123 456" value="<?php echo ss($settings, 'header_phone'); ?>">
 										</div>
 										<div class="mb-3 col-lg-4">
-											<label class="form-label">Header Phone Number <small class="text-muted">(leave blank to hide the icon)</small></label>
-											<input type="text" name="header_phone" class="form-control" placeholder="815-804-8928" value="<?php echo ss($settings, 'header_phone'); ?>">
+											<label class="form-label">Header Email <small class="text-muted">(shown as text in the top bar; leave blank to hide)</small></label>
+											<input type="text" name="header_email" class="form-control" placeholder="info@marsconstruction.com" value="<?php echo ss($settings, 'header_email'); ?>">
 										</div>
 										<div class="mb-3 col-lg-4">
 											<label class="form-label">WhatsApp Link <small class="text-muted">(leave blank to hide the icon)</small></label>
 											<input type="text" name="header_whatsapp_url" class="form-control" placeholder="https://wa.me/15551234567" value="<?php echo ss($settings, 'header_whatsapp_url'); ?>">
+										</div>
+									</div>
+
+									<hr class="my-4">
+									<h5 class="mb-3">Header Icons</h5>
+									<div class="row">
+										<div class="mb-3 col-lg-4">
+											<label class="form-label">Video Call Link <small class="text-muted">(leave blank to hide the icon)</small></label>
+											<input type="text" name="header_video_url" class="form-control" placeholder="https://meet.google.com/..." value="<?php echo ss($settings, 'header_video_url'); ?>">
 										</div>
 									</div>
 
