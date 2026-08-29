@@ -125,8 +125,10 @@ $page_title_bg = $pbstmt->fetchColumn();
 								</div>
 
 								<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-									<ul class="navigation clearfix">
-										<?php render_menu_branch($menu_by_parent, 0); ?>
+									<ul class="navigation clearfix header-quicklinks">
+										<li><a href="plans.php">House Plans</a></li>
+										<li><a href="construction.php">General Construction</a></li>
+										<li><a href="property-management.php">Property Management</a></li>
 									</ul>
 								</div>
 							</nav>
@@ -139,22 +141,10 @@ $page_title_bg = $pbstmt->fetchColumn();
 							<!-- Header Options Box -->
 							<div class="header-options_box d-flex align-items-center">
 
-								<!-- Contact Info -->
-								<?php if (!empty($site_settings['header_phone']) || !empty($site_settings['header_email'])): ?>
-								<div class="header-contact_info d-flex align-items-center">
-									<?php if (!empty($site_settings['header_phone'])): ?>
-										<a href="tel:<?php echo htmlspecialchars($site_settings['header_phone']); ?>" class="header-contact_item"><i class="fa-solid fa-phone"></i><?php echo htmlspecialchars($site_settings['header_phone']); ?></a>
-									<?php endif; ?>
-									<?php if (!empty($site_settings['header_phone']) && !empty($site_settings['header_email'])): ?>
-										<span class="header-contact_divider"></span>
-									<?php endif; ?>
-									<?php if (!empty($site_settings['header_email'])): ?>
-										<a href="mailto:<?php echo htmlspecialchars($site_settings['header_email']); ?>" class="header-contact_item"><i class="fa-solid fa-envelope"></i><?php echo htmlspecialchars($site_settings['header_email']); ?></a>
-									<?php endif; ?>
-								</div>
-								<?php endif; ?>
-
 								<!-- Contact Icons -->
+								<?php if (!empty($site_settings['header_phone'])): ?>
+									<a href="tel:<?php echo htmlspecialchars($site_settings['header_phone']); ?>" class="header-contact-icon" title="Call Us"><i class="fa-solid fa-phone"></i></a>
+								<?php endif; ?>
 								<?php if (!empty($site_settings['header_video_url'])): ?>
 									<a href="<?php echo htmlspecialchars($site_settings['header_video_url']); ?>" class="header-contact-icon" title="Video Call" target="_blank" rel="noopener"><i class="fa-solid fa-video"></i></a>
 								<?php endif; ?>
