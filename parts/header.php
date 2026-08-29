@@ -55,6 +55,15 @@ function render_menu_branch($menu_by_parent, $parent_id, $depth = 0) {
 	}
 ?></title>
 
+<!-- Icon webfonts, preloaded. A browser normally won't request a font until it has parsed the
+     CSS *and* laid out an element using it, which delayed these by ~3s after their stylesheet
+     had already arrived - leaving the nav bar with blank icon circles and a wrapped, broken
+     pill for several seconds. Preloading starts the download immediately, in parallel with CSS.
+     fa-solid-900 covers the nav/category-bar icons, fa-brands-400 the WhatsApp mark. -->
+<link rel="preload" href="assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+
 <!-- Stylesheets -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <!-- These were previously loaded via @import inside style.css, which forces the browser to
