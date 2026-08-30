@@ -776,17 +776,23 @@ img{
 	line-height: 1em;
 	letter-spacing:1px;
 	margin-bottom:20px;
-	padding-left:25px;
+	padding-left:28px;
 	display:inline-block;
 	color: var(--main-color);
-	text-transform:uppercase; 
+	text-transform:uppercase;
 }
 
 .sec-title_title:before{
 	position: absolute;
-	content:'//';
+	content:'';
 	left:0px;
-	top:0px;
+	top:50%;
+	transform: translateY(-50%);
+	width:18px;
+	height:18px;
+	background-color: currentColor;
+	-webkit-mask: url('../images/icons/section-mark.svg') center / contain no-repeat;
+	mask: url('../images/icons/section-mark.svg') center / contain no-repeat;
 }
 
 .sec-title_heading{

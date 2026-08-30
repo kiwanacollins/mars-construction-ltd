@@ -1,0 +1,12 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 17.5V4.16667C2.5 3.70643 2.87310 3.33333 3.33333 3.33333H10.8333C11.2936 3.33333 11.6667 3.70643 11.6667 4.16667V8.33333H16.6667C17.1269 8.33333 17.5 8.70643 17.5 9.16667V17.5H2.5Z" fill="currentColor" fill-opacity="0.18"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.33333 3.33333C2.8731 3.33333 2.5 3.70643 2.5 4.16667V17.5H0.833334V19.1667H19.1667V17.5H17.5V9.16667C17.5 8.70643 17.1269 8.33333 16.6667 8.33333H11.6667V4.16667C11.6667 3.70643 11.2936 3.33333 10.8333 3.33333H3.33333ZM10 5H4.16667V17.5H10V5ZM11.6667 10H15.8333V17.5H11.6667V10Z" fill="currentColor"/>
+<rect x="5.41667" y="6.66667" width="1.66667" height="1.66667" fill="currentColor"/>
+<rect x="5.41667" y="10" width="1.66667" height="1.66667" fill="currentColor"/>
+<rect x="5.41667" y="13.3333" width="1.66667" height="1.66667" fill="currentColor"/>
+<rect x="8.33333" y="6.66667" width="1.66667" height="1.66667" fill="currentColor"/>
+<rect x="8.33333" y="10" width="1.66667" height="1.66667" fill="currentColor"/>
+<rect x="8.33333" y="13.3333" width="1.66667" height="1.66667" fill="currentColor"/>
+<rect x="13.3333" y="11.6667" width="1.25" height="1.25" fill="currentColor"/>
+<rect x="13.3333" y="14.1667" width="1.25" height="1.25" fill="currentColor"/>
+</svg>
