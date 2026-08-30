@@ -30,6 +30,7 @@ function render_property_card($plan, $column_class = 'col-lg-3 col-md-6 col-sm-1
 function fetch_properties_page($pdo, $offset, $limit) {
     $stmt = $pdo->prepare(
         "SELECT p.*, (SELECT file_path FROM property_files pf WHERE pf.property_id = p.id ORDER BY pf.is_cover DESC, pf.id ASC LIMIT 1) AS cover_image,
+         (SELECT GROUP_CONCAT(pf2.file_path ORDER BY pf2.is_cover DESC, pf2.id ASC SEPARATOR '|') FROM property_files pf2 WHERE pf2.property_id = p.id AND pf2.file_type = 'image') AS gallery_images,
          (SELECT COUNT(*) FROM reviews r WHERE r.reviewable_type = 'plan' AND r.reviewable_id = p.id AND r.status = 'approved') AS comments_count
          FROM properties p ORDER BY p.created_at DESC, p.id DESC LIMIT ? OFFSET ?"
     );
@@ -51,7 +52,11 @@ function format_compact_number($value) {
 }
 
 function render_feed_card($plan) {
-    $cover = $plan['cover_image'] ? 'Admin/' . $plan['cover_image'] : 'assets/images/resource/property-1.jpg';
+    $fallback = 'assets/images/resource/property-1.jpg';
+    $gallery = !empty($plan['gallery_images']) ? array_map(fn($p) => 'Admin/' . $p, explode('|', $plan['gallery_images'])) : [];
+    if (!$gallery) {
+        $gallery = [$plan['cover_image'] ? 'Admin/' . $plan['cover_image'] : $fallback];
+    }
     $bathrooms = rtrim(rtrim(number_format($plan['bathrooms'], 1), '0'), '.');
     $detail_url = 'plan-detail.php?slug=' . urlencode($plan['slug']);
     $comments_count = isset($plan['comments_count']) ? (int) $plan['comments_count'] : 0;
@@ -59,8 +64,17 @@ function render_feed_card($plan) {
     ?>
     <div class="col-12">
         <div class="feed-card">
-            <a href="<?php echo htmlspecialchars($detail_url); ?>" class="feed-card_image-link">
-                <img src="<?php echo htmlspecialchars($cover); ?>" alt="<?php echo htmlspecialchars($plan['title']); ?>" />
+            <a href="<?php echo htmlspecialchars($detail_url); ?>" class="feed-card_image-link<?php echo count($gallery) > 1 ? ' feed-card_carousel' : ''; ?>" data-feed-carousel>
+                <?php foreach ($gallery as $i => $src): ?>
+                    <img src="<?php echo htmlspecialchars($src); ?>" alt="<?php echo htmlspecialchars($plan['title']); ?>" class="feed-card_slide<?php echo $i === 0 ? ' is-active' : ''; ?>" />
+                <?php endforeach; ?>
+                <?php if (count($gallery) > 1): ?>
+                    <div class="feed-card_dots">
+                        <?php foreach ($gallery as $i => $src): ?>
+                            <span class="feed-card_dot-indicator<?php echo $i === 0 ? ' is-active' : ''; ?>"></span>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
                 <?php if (!empty($plan['plan_number'])): ?>
                     <div class="feed-card_id-badge"><?php echo htmlspecialchars($plan['plan_number']); ?></div>
                 <?php endif; ?>

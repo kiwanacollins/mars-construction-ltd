@@ -326,6 +326,27 @@
 		var loading = false;
 		var hasMore = true;
 
+		function initFeedCarousels(container) {
+			container.querySelectorAll('[data-feed-carousel]:not([data-carousel-ready])').forEach(function (el) {
+				el.setAttribute('data-carousel-ready', '1');
+				var slides = el.querySelectorAll('.feed-card_slide');
+				var dots = el.querySelectorAll('.feed-card_dot-indicator');
+				if (slides.length < 2) {
+					return;
+				}
+				var current = 0;
+				setInterval(function () {
+					slides[current].classList.remove('is-active');
+					if (dots[current]) { dots[current].classList.remove('is-active'); }
+					current = (current + 1) % slides.length;
+					slides[current].classList.add('is-active');
+					if (dots[current]) { dots[current].classList.add('is-active'); }
+				}, 3500);
+			});
+		}
+
+		initFeedCarousels(feed);
+
 		var observer = new IntersectionObserver(function (entries) {
 			if (entries[0].isIntersecting && hasMore && !loading) {
 				loadMore();
@@ -348,6 +369,7 @@
 						return;
 					}
 					feed.insertAdjacentHTML('beforeend', html);
+					initFeedCarousels(feed);
 					offset += pageSize;
 					loading = false;
 				})
