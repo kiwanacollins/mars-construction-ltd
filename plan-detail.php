@@ -42,6 +42,34 @@ $recent_plans = $pdo->query(
     "SELECT p.*, (SELECT file_path FROM property_files pf WHERE pf.property_id = p.id ORDER BY pf.is_cover DESC, pf.id ASC LIMIT 1) AS cover_image
      FROM properties p WHERE p.id != " . (int) ($property['id'] ?? 0) . " ORDER BY p.created_at DESC LIMIT 3"
 )->fetchAll();
+
+require_once __DIR__ . '/parts/property-card.php';
+$related_plans = [];
+if (!empty($property['id']) && !empty($property['category'])) {
+    $related_stmt = $pdo->prepare(
+        "SELECT p.*, (SELECT file_path FROM property_files pf WHERE pf.property_id = p.id ORDER BY pf.is_cover DESC, pf.id ASC LIMIT 1) AS cover_image
+         FROM properties p WHERE p.category = ? AND p.id != ? ORDER BY p.featured DESC, p.created_at DESC LIMIT 4"
+    );
+    $related_stmt->execute([$property['category'], $property['id']]);
+    $related_plans = $related_stmt->fetchAll();
+
+    if (count($related_plans) < 4) {
+        $exclude_ids = array_merge([$property['id']], array_column($related_plans, 'id'));
+        $placeholders = implode(',', array_fill(0, count($exclude_ids), '?'));
+        $fallback_stmt = $pdo->prepare(
+            "SELECT p.*, (SELECT file_path FROM property_files pf WHERE pf.property_id = p.id ORDER BY pf.is_cover DESC, pf.id ASC LIMIT 1) AS cover_image
+             FROM properties p WHERE p.id NOT IN ($placeholders) ORDER BY p.created_at DESC LIMIT ?"
+        );
+        $fallback_limit = 4 - count($related_plans);
+        $bind_values = $exclude_ids;
+        $bind_values[] = $fallback_limit;
+        foreach ($bind_values as $i => $v) {
+            $fallback_stmt->bindValue($i + 1, $v, PDO::PARAM_INT);
+        }
+        $fallback_stmt->execute();
+        $related_plans = array_merge($related_plans, $fallback_stmt->fetchAll());
+    }
+}
 ?>
 <?php require_once __DIR__ . '/parts/header.php'; ?>
 	<!-- End Main Header -->
@@ -311,6 +339,23 @@ $recent_plans = $pdo->query(
 			</div>
 		</div>
 	</div>
+
+	<?php if ($related_plans): ?>
+	<!-- Related Plans -->
+	<section class="property-one style-two">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title">
+				<div class="sec-title_title">You Might Also Like</div>
+				<h2 class="sec-title_heading">Related Plans</h2>
+			</div>
+			<div class="row clearfix">
+				<?php foreach ($related_plans as $plan) { echo render_property_card($plan); } ?>
+			</div>
+		</div>
+	</section>
+	<!-- End Related Plans -->
+	<?php endif; ?>
 
 	<?php if ($property['id'] ?? false): ?>
 	<script>
