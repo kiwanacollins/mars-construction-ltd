@@ -9,5 +9,5 @@ $plans = fetch_properties_page($pdo, $offset, $limit);
 
 header('Content-Type: text/html; charset=utf-8');
 foreach ($plans as $plan) {
-    echo render_property_card($plan);
+    echo render_property_card($plan, 'col-12');
 }
