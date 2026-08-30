@@ -622,8 +622,8 @@ h1, h2, h3, h4, h5, h6 {
 .banner-two_slider,
 .banner-two_slider .swiper-wrapper,
 .banner-two_slider .swiper-slide {
-	height: 100vh;
-	height: 100dvh;
+	height: calc(100vh - var(--hero-offset, 0px));
+	height: calc(100dvh - var(--hero-offset, 0px));
 }
 
 .banner-two_slider .swiper-slide {

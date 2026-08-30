@@ -98,6 +98,20 @@
 	</section>
 	<!-- End Banner Two -->
 
+	<script>
+	(function () {
+		function setHeroOffset() {
+			var header = document.querySelector('.main-header');
+			var categoryBar = document.querySelector('.category-bar');
+			var offset = (header ? header.offsetHeight : 0) + (categoryBar ? categoryBar.offsetHeight : 0);
+			document.documentElement.style.setProperty('--hero-offset', offset + 'px');
+		}
+		setHeroOffset();
+		window.addEventListener('resize', setHeroOffset);
+		window.addEventListener('load', setHeroOffset);
+	})();
+	</script>
+
 	<?php if (count($hero_slides) > 1): ?>
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
@@ -106,6 +120,7 @@
 			loop: true,
 			effect: 'fade',
 			fadeEffect: { crossFade: true },
+			speed: 1400,
 			autoplay: { delay: 6000 },
 			pagination: { el: '.banner-two_slider-pagination', clickable: true }
 		});
