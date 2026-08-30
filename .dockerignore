@@ -1,6 +1,5 @@
 .git
 .gitignore
 .DS_Store
-docker/mysql-init
 *.log
 node_modules
