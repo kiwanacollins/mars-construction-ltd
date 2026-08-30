@@ -117,11 +117,6 @@ $page_title_bg = $pbstmt->fetchColumn();
 
 <div class="page-wrapper">
 
-	<!-- Cursor -->
-	<div class="cursor"></div>
-	<div class="cursor-follower"></div>
-	<!-- Cursor End -->
-
 	<!-- Main Header -->
 	<header class="main-header<?php echo empty($home) ? ' header-style-four' : ''; ?>">
 
