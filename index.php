@@ -289,12 +289,11 @@
 	</section>
 	<!-- End Property One -->
 
-	<!-- Latest Plans -->
+	<!-- Latest Plans (infinite scroll) -->
 	<?php
-		$home_latest_plans = $pdo->query(
-			"SELECT p.*, (SELECT file_path FROM property_files pf WHERE pf.property_id = p.id ORDER BY pf.is_cover DESC, pf.id ASC LIMIT 1) AS cover_image
-			 FROM properties p ORDER BY p.created_at DESC LIMIT 8"
-		)->fetchAll();
+		require_once __DIR__ . '/parts/property-card.php';
+		$latest_plans_page_size = 8;
+		$home_latest_plans = fetch_properties_page($pdo, 0, $latest_plans_page_size);
 	?>
 	<?php if ($home_latest_plans): ?>
 	<section class="latest-plans-one">
@@ -304,34 +303,61 @@
 				<div class="sec-title_title">Fresh Off The Press</div>
 				<h2 class="sec-title_heading">Latest Plans</h2>
 			</div>
-			<div class="row clearfix">
-				<?php foreach ($home_latest_plans as $plan): ?>
-					<div class="property-block_one style-two col-lg-3 col-md-6 col-sm-12">
-						<div class="property-block_one-inner">
-							<div class="property-block_one-image">
-								<?php if ($plan['featured']): ?><div class="property-block_one-title">Featured</div><?php endif; ?>
-								<a class="property-block_one-heart" href="plan-detail.php?slug=<?php echo urlencode($plan['slug']); ?>"><i class="flaticon-heart"></i></a>
-								<a href="plan-detail.php?slug=<?php echo urlencode($plan['slug']); ?>" class="property-block_one-image-link">
-									<img src="<?php echo htmlspecialchars($plan['cover_image'] ? 'Admin/' . $plan['cover_image'] : 'assets/images/resource/property-1.jpg'); ?>" alt="" />
-									<div class="property-block_one-image-content">
-										<h4 class="property-block_one-heading"><?php echo htmlspecialchars($plan['title']); ?></h4>
-										<ul class="property-block_one-info">
-											<li><span><img src="assets/images/icons/bed.svg" alt="" /></span><?php echo (int) $plan['bedrooms']; ?> Beds</li>
-											<li><span><img src="assets/images/icons/bath.svg" alt="" /></span><?php echo rtrim(rtrim(number_format($plan['bathrooms'], 1), '0'), '.'); ?> Bathrooms</li>
-											<li><span><img src="assets/images/icons/square.svg" alt="" /></span><?php echo number_format($plan['area_sqft']); ?> sqft</li>
-										</ul>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-				<?php endforeach; ?>
+			<div class="row clearfix" id="latest-plans-feed">
+				<?php foreach ($home_latest_plans as $plan) { echo render_property_card($plan); } ?>
 			</div>
-			<div class="text-center mt-3">
-				<a href="plans.php" class="theme-btn btn-style-two"><span class="btn-wrap"><span class="text-one">View All Plans</span><span class="text-two">View All Plans</span></span></a>
-			</div>
+			<div id="latest-plans-sentinel"></div>
+			<p id="latest-plans-loading" class="text-center" style="display:none;">Loading more plans&hellip;</p>
+			<p id="latest-plans-end" class="text-center" style="display:none;"></p>
 		</div>
 	</section>
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		var feed = document.getElementById('latest-plans-feed');
+		var sentinel = document.getElementById('latest-plans-sentinel');
+		var loadingEl = document.getElementById('latest-plans-loading');
+		var endEl = document.getElementById('latest-plans-end');
+		if (!feed || !sentinel) {
+			return;
+		}
+
+		var offset = <?php echo (int) $latest_plans_page_size; ?>;
+		var pageSize = <?php echo (int) $latest_plans_page_size; ?>;
+		var loading = false;
+		var hasMore = true;
+
+		var observer = new IntersectionObserver(function (entries) {
+			if (entries[0].isIntersecting && hasMore && !loading) {
+				loadMore();
+			}
+		}, { rootMargin: '400px' });
+		observer.observe(sentinel);
+
+		function loadMore() {
+			loading = true;
+			loadingEl.style.display = '';
+			fetch('plans-feed.php?offset=' + offset)
+				.then(function (res) { return res.text(); })
+				.then(function (html) {
+					loadingEl.style.display = 'none';
+					if (!html.trim()) {
+						hasMore = false;
+						observer.disconnect();
+						endEl.textContent = 'All plans loaded';
+						endEl.style.display = '';
+						return;
+					}
+					feed.insertAdjacentHTML('beforeend', html);
+					offset += pageSize;
+					loading = false;
+				})
+				.catch(function () {
+					loadingEl.style.display = 'none';
+					loading = false;
+				});
+		}
+	});
+	</script>
 	<?php endif; ?>
 	<!-- End Latest Plans -->
 
