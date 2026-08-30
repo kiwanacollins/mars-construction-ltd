@@ -630,6 +630,17 @@ h1, h2, h3, h4, h5, h6 {
 	position: relative;
 }
 
+/* Swiper's fade effect crossfades the whole slide via inline opacity/transition (needed for its
+   own transitionend-driven autoplay timing - never override those on .swiper-slide). The visible
+   text is instead pulled out of that fade with visibility, which doesn't touch opacity/transition. */
+.banner-two_slider .swiper-slide .banner-two_content {
+	visibility: hidden;
+}
+
+.banner-two_slider .swiper-slide-active .banner-two_content {
+	visibility: visible;
+}
+
 .banner-two_slider .swiper-slide .banner-two_image {
 	position: absolute;
 }
@@ -646,29 +657,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .banner-two_slider .swiper-slide .banner-two_image:not(.banner-two_image-video) {
-	opacity: 0;
 	transform: scale(1);
 }
 
-/* Ken Burns effect: each active slide's background scales up and fades in/out over its dwell time */
+/* Ken Burns effect: the active slide's background slowly scales up for as long as it stays on screen. */
 .banner-two_slider .swiper-slide-active .banner-two_image:not(.banner-two_image-video) {
-	animation: heroKenBurns 6s ease-in-out forwards;
+	animation: heroKenBurns 18s ease-out forwards;
 }
 
 @keyframes heroKenBurns {
 	0% {
-		opacity: 0;
 		transform: scale(1);
 	}
-	15% {
-		opacity: 1;
-	}
-	85% {
-		opacity: 1;
-	}
 	100% {
-		opacity: 0;
-		transform: scale(1.1);
+		transform: scale(1.12);
 	}
 }
 
