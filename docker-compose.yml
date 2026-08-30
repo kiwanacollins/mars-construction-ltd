@@ -1,15 +1,13 @@
 services:
   app:
     build: .
-    ports:
-      - "8080:80"
     environment:
       DB_HOST: mysql
-      DB_NAME: mars_estate
-      DB_USER: mars
-      DB_PASS: marspass
+      DB_NAME: ${DB_NAME:-mars_estate}
+      DB_USER: ${DB_USER:-mars}
+      DB_PASS: ${DB_PASS}
     volumes:
-      - ./Admin/uploads:/var/www/html/Admin/uploads
+      - uploads_data:/var/www/html/Admin/uploads
     depends_on:
       mysql:
         condition: service_healthy
@@ -18,17 +16,15 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: mars_estate
-      MYSQL_USER: mars
-      MYSQL_PASSWORD: marspass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME:-mars_estate}
+      MYSQL_USER: ${DB_USER:-mars}
+      MYSQL_PASSWORD: ${DB_PASS}
     volumes:
       - db_data:/var/lib/mysql
       - ./docker/mysql-init:/docker-entrypoint-initdb.d
-    ports:
-      - "3307:3306"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$$MYSQL_ROOT_PASSWORD"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -36,3 +32,4 @@ services:
 
 volumes:
   db_data:
+  uploads_data:
