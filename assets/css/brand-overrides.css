@@ -615,6 +615,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Homepage hero slider: swiper wraps the existing banner-two background + content pairing */
+.banner-two {
+	background-color: var(--color-two);
+}
+
 .banner-two_slider,
 .banner-two_slider .swiper-slide {
 	position: relative;
@@ -622,6 +626,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .banner-two_slider .swiper-slide .banner-two_image {
 	position: absolute;
+}
+
+.banner-two_slider .swiper-slide .banner-two_image:not(.banner-two_image-video) {
+	opacity: 0;
+	transform: scale(1);
+}
+
+/* Ken Burns effect: each active slide's background scales up and fades in/out over its dwell time */
+.banner-two_slider .swiper-slide-active .banner-two_image:not(.banner-two_image-video) {
+	animation: heroKenBurns 6s ease-in-out forwards;
+}
+
+@keyframes heroKenBurns {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	15% {
+		opacity: 1;
+	}
+	85% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.1);
+	}
 }
 
 .banner-two_slider-pagination {
