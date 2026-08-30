@@ -1118,6 +1118,165 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 30px 0 100px;
 }
 
+/* Latest Plans infinite-scroll feed: square-image post card */
+#latest-plans-feed {
+	justify-content: center;
+}
+
+.feed-card {
+	max-width: 900px;
+	margin: 0 auto 30px;
+	border-radius: 16px;
+	overflow: hidden;
+	background-color: var(--color-two);
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.feed-card_image-link {
+	position: relative;
+	display: block;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+}
+
+.feed-card_image-link img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 500ms ease;
+}
+
+.feed-card_image-link:hover img {
+	transform: scale(1.04);
+}
+
+.feed-card_id-badge {
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	z-index: 1;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.3px;
+	padding: 4px 14px;
+	border-radius: 50px;
+	color: var(--white-color);
+	background-color: var(--secondary-color);
+}
+
+.feed-card_views-badge {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 5px 14px;
+	border-radius: 50px;
+	color: var(--white-color);
+	background-color: rgba(0, 0, 0, 0.45);
+	backdrop-filter: blur(4px);
+}
+
+.feed-card_views-badge i {
+	font-size: 14px;
+}
+
+.feed-card_body {
+	padding: 20px 22px 22px;
+}
+
+.feed-card_meta {
+	font-size: 14px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.65);
+	margin-bottom: 8px;
+}
+
+.feed-card_dot {
+	margin: 0 6px;
+	opacity: 0.5;
+}
+
+.feed-card_title {
+	display: block;
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--white-color);
+	margin-bottom: 16px;
+	transition: color 300ms ease;
+}
+
+.feed-card_title:hover {
+	color: var(--main-color);
+}
+
+.feed-card_footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 14px;
+	padding-top: 16px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feed-card_price {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--secondary-color);
+}
+
+.feed-card_price-label {
+	font-size: 13px;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.feed-card_actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.feed-card_action {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.65);
+}
+
+.feed-card_action i {
+	font-size: 15px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.feed-card_cta {
+	padding: 8px 18px;
+	border-radius: 50px;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--white-color);
+	background-color: var(--main-color);
+	transition: background-color 300ms ease;
+}
+
+.feed-card_cta:hover {
+	color: var(--white-color);
+	background-color: var(--secondary-color);
+}
+
 /* Plans catalogue: filter sidebar redesign. */
 .plans-filter_head {
 	display: flex;

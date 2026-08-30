@@ -13,6 +13,18 @@ if (!empty($_GET['slug'])) {
     $property = $stmt->fetch();
 }
 
+if ($property) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    $viewed_key = 'viewed_plan_' . $property['id'];
+    if (empty($_SESSION[$viewed_key])) {
+        $pdo->prepare('UPDATE properties SET views = views + 1 WHERE id = ?')->execute([$property['id']]);
+        $property['views']++;
+        $_SESSION[$viewed_key] = true;
+    }
+}
+
 $property_files = [];
 $features = [];
 $addons = [];

@@ -304,7 +304,7 @@
 				<h2 class="sec-title_heading">Latest Plans</h2>
 			</div>
 			<div class="row clearfix" id="latest-plans-feed">
-				<?php foreach ($home_latest_plans as $plan) { echo render_property_card($plan, 'col-12'); } ?>
+				<?php foreach ($home_latest_plans as $plan) { echo render_feed_card($plan); } ?>
 			</div>
 			<div id="latest-plans-sentinel"></div>
 			<p id="latest-plans-loading" class="text-center" style="display:none;">Loading more plans&hellip;</p>
