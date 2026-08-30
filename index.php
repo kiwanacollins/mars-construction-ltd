@@ -121,7 +121,7 @@
 			effect: 'fade',
 			fadeEffect: { crossFade: true },
 			speed: 1400,
-			autoplay: { delay: 6000 },
+			autoplay: { delay: 6000, disableOnInteraction: false },
 			pagination: { el: '.banner-two_slider-pagination', clickable: true }
 		});
 	});
