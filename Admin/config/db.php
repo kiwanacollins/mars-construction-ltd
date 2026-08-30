@@ -1,8 +1,8 @@
 <?php
-$DB_HOST = 'localhost';
-$DB_NAME = 'mars_estate';
-$DB_USER = 'root';
-$DB_PASS = '';
+$DB_HOST = getenv('DB_HOST') ?: 'localhost';
+$DB_NAME = getenv('DB_NAME') ?: 'mars_estate';
+$DB_USER = getenv('DB_USER') ?: 'root';
+$DB_PASS = getenv('DB_PASS') ?: '';
 
 try {
     $pdo = new PDO(
