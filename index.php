@@ -172,6 +172,65 @@
 	<?php endif; ?>
 	<!-- End Modern Villas -->
 
+	<!-- Other Categories -->
+	<?php
+		$home_other_categories = [
+			'Villas' => 'Hand-Picked',
+			'Apartments' => 'City Living',
+			'Residential' => 'Everyday Comfort',
+			'Hotels' => 'Hospitality',
+			'Country Homes' => 'Rural Retreats',
+		];
+		foreach ($home_other_categories as $category_name => $category_eyebrow):
+			$category_plans = $pdo->prepare(
+				"SELECT p.*, (SELECT file_path FROM property_files pf WHERE pf.property_id = p.id ORDER BY pf.is_cover DESC, pf.id ASC LIMIT 1) AS cover_image
+				 FROM properties p WHERE p.category = ? ORDER BY p.featured DESC, p.created_at DESC"
+			);
+			$category_plans->execute([$category_name]);
+			$category_plans = $category_plans->fetchAll();
+			if (!$category_plans) {
+				continue;
+			}
+	?>
+	<section class="property-one style-two">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title d-flex justify-content-between align-items-end flex-wrap">
+				<div>
+					<div class="sec-title_title"><?php echo htmlspecialchars($category_eyebrow); ?></div>
+					<h2 class="sec-title_heading"><?php echo htmlspecialchars($category_name); ?></h2>
+				</div>
+				<a href="plans.php?category=<?php echo urlencode($category_name); ?>" class="theme-btn btn-style-two"><span class="btn-wrap"><span class="text-one">View All <?php echo htmlspecialchars($category_name); ?></span><span class="text-two">View All <?php echo htmlspecialchars($category_name); ?></span></span></a>
+			</div>
+			<div class="row clearfix">
+				<?php foreach ($category_plans as $plan): ?>
+					<!-- Property Block One / Style Two -->
+					<div class="property-block_one style-two col-lg-3 col-md-6 col-sm-12">
+						<div class="property-block_one-inner">
+							<div class="property-block_one-image">
+								<?php if ($plan['featured']): ?><div class="property-block_one-title">Featured</div><?php endif; ?>
+								<a class="property-block_one-heart" href="plan-detail.php?slug=<?php echo urlencode($plan['slug']); ?>"><i class="flaticon-heart"></i></a>
+								<a href="plan-detail.php?slug=<?php echo urlencode($plan['slug']); ?>" class="property-block_one-image-link">
+									<img src="<?php echo htmlspecialchars($plan['cover_image'] ? 'Admin/' . $plan['cover_image'] : 'assets/images/resource/property-1.jpg'); ?>" alt="" />
+									<div class="property-block_one-image-content">
+										<h4 class="property-block_one-heading"><?php echo htmlspecialchars($plan['title']); ?></h4>
+										<ul class="property-block_one-info">
+											<li><span><img src="assets/images/icons/bed.svg" alt="" /></span><?php echo (int) $plan['bedrooms']; ?> Bed</li>
+											<li><span><img src="assets/images/icons/bath.svg" alt="" /></span><?php echo rtrim(rtrim(number_format($plan['bathrooms'], 1), '0'), '.'); ?> Bath</li>
+											<li><span><img src="assets/images/icons/square.svg" alt="" /></span><?php echo number_format($plan['area_sqft']); ?> sqft</li>
+										</ul>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+	<?php endforeach; ?>
+	<!-- End Other Categories -->
+
 	<!-- Property One -->
 	<section class="property-one style-two">
 		<div class="auto-container">
