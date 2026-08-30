@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6 {
 .category-bar_home a {
 	background-color: var(--secondary-color);
 	border-radius: 50px;
-	padding: 13px 24px 13px 34px;
+	padding: 13px 24px 13px 26px;
 	position: relative;
 }
 
@@ -194,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
 .category-bar_home a::after {
 	content: '';
 	position: absolute;
-	left: 36px;
+	left: 28px;
 	bottom: 6px;
 	width: 22px;
 	height: 3px;
