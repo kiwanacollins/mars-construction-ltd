@@ -14,7 +14,9 @@ services:
     restart: unless-stopped
 
   mysql:
-    image: mysql:8.0
+    build:
+      context: .
+      dockerfile: docker/mysql/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME:-mars_estate}
@@ -22,7 +24,6 @@ services:
       MYSQL_PASSWORD: ${DB_PASS}
     volumes:
       - db_data:/var/lib/mysql
-      - ./docker/mysql-init:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$$MYSQL_ROOT_PASSWORD"]
       interval: 5s
