@@ -276,6 +276,22 @@
 	<?php endif; ?>
 	<!-- End Latest Plans -->
 
+	<!-- Buy Ready Plans Banner -->
+	<section class="plans-cta-one">
+		<div class="auto-container">
+			<a href="plans.php" class="plans-cta-one_inner">
+				<div class="plans-cta-one_icon"><i class="flaticon-up-right-arrow"></i></div>
+				<div class="plans-cta-one_content">
+					<div class="plans-cta-one_label">Ready To Build</div>
+					<h3 class="plans-cta-one_heading">Buy Ready House Plans</h3>
+					<div class="plans-cta-one_text">Curated, architect-approved designs available now</div>
+				</div>
+				<div class="plans-cta-one_arrow"><i class="flaticon-up-right-arrow"></i></div>
+			</a>
+		</div>
+	</section>
+	<!-- End Buy Ready Plans Banner -->
+
 	<!-- Services One -->
 	<section class="services-one">
 		<div class="auto-container">

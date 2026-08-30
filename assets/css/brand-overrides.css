@@ -1241,6 +1241,100 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: var(--secondary-color) !important;
 }
 
+/* "Buy Ready House Plans" banner: same solid-color card language as the Let's Talk CTA */
+.plans-cta-one {
+	padding: 0 0 60px;
+}
+
+.plans-cta-one_inner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	padding: 32px 40px;
+	border-radius: 16px;
+	background-color: var(--color-two);
+	transition: background-color 300ms ease;
+}
+
+.plans-cta-one_inner:hover {
+	background-color: var(--secondary-color);
+}
+
+.plans-cta-one_icon {
+	flex-shrink: 0;
+	width: 56px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	background-color: var(--main-color);
+	font-size: 22px;
+	color: var(--white-color);
+}
+
+.plans-cta-one_content {
+	flex-grow: 1;
+	min-width: 0;
+}
+
+.plans-cta-one_label {
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: var(--main-color);
+	margin-bottom: 8px;
+}
+
+.plans-cta-one_heading {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--white-color);
+	margin-bottom: 6px;
+}
+
+.plans-cta-one_text {
+	font-size: 15px;
+	color: rgba(255, 255, 255, 0.65);
+}
+
+.plans-cta-one_arrow {
+	flex-shrink: 0;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: var(--white-color);
+	font-size: 18px;
+	transition: background-color 300ms ease, transform 300ms ease;
+}
+
+.plans-cta-one_inner:hover .plans-cta-one_arrow {
+	background-color: var(--white-color);
+	color: var(--color-two);
+	transform: translate(2px, -2px);
+}
+
+@media (max-width: 767px) {
+	.plans-cta-one_inner {
+		flex-wrap: wrap;
+		padding: 28px 24px;
+	}
+
+	.plans-cta-one_heading {
+		font-size: 20px;
+	}
+
+	.plans-cta-one_arrow {
+		margin-left: auto;
+	}
+}
+
 /* Homepage: "Our Portfolio" project slider */
 .projects-one {
 	position: relative;
