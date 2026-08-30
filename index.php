@@ -104,7 +104,6 @@
 		new Swiper('.banner-two_slider', {
 			slidesPerView: 1,
 			loop: true,
-			autoHeight: true,
 			effect: 'fade',
 			fadeEffect: { crossFade: true },
 			autoplay: { delay: 6000 },

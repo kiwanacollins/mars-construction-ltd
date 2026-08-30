@@ -620,12 +620,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .banner-two_slider,
+.banner-two_slider .swiper-wrapper,
+.banner-two_slider .swiper-slide {
+	height: 100vh;
+	height: 100dvh;
+}
+
 .banner-two_slider .swiper-slide {
 	position: relative;
 }
 
 .banner-two_slider .swiper-slide .banner-two_image {
 	position: absolute;
+}
+
+.banner-two_slider .swiper-slide > .auto-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.banner-two_slider .banner-two_content-inner {
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .banner-two_slider .swiper-slide .banner-two_image:not(.banner-two_image-video) {
